@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include("partials/_head") -%>
+<body>
+    <%- include("partials/_header") -%>
+
+    <main class="max-w-[1140px] mx-auto pt-5">
+        <section>
+            <div class="post-detail">
+                <div class="post-img">
+                    <img src="<%= blog.image %>" alt="" class="max-h-[450px] w-full object-cover">
+                </div>
+                <div class="post-title mt-3">
+                    <h1 class="font-bold text-2xl"><%= blog.title %></h1>
+                </div>
+                <div class="post-description mt-3">
+                    <p class="text-lg"><%=blog.description%></p>
+                </div>
+                <div class="post-detail mt-3">
+                    <p><%=blog.detail%></p>
+                </div>
+                <a href="/blogs/edit/<%= blog._id %>" class="text-lime-600 mt-3 inline-block">Post Edit</a>
+            </div>
+        </section>
+    </main>
+    <%- include("partials/_footer") -%>
+</body>
+</html>

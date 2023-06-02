@@ -1,5 +1,6 @@
 {
   "devDependencies": {
+    "nodemon": "^2.0.22",
     "tailwindcss": "^3.3.2"
   },
   "name": "mediumish",
@@ -42,6 +43,7 @@
     "lilconfig": "^2.1.0",
     "lines-and-columns": "^1.2.4",
     "merge2": "^1.4.1",
+    "method-override": "^3.0.0",
     "micromatch": "^4.0.5",
     "minimatch": "^3.1.2",
     "mongoose": "^7.2.1",
@@ -82,7 +84,7 @@
     "yaml": "^2.2.2"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodemon app"
   },
   "author": "",
   "license": "ISC",

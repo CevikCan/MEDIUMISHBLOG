@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include("partials/_head") -%>
+
+<body>
+    <%- include("partials/_header") -%>
+    <main class="max-w-[1140px] mx-auto pt-5">
+        <h2 class="main-title font-righteous text-[40px] max-[1200px]:px-4">Add Post</h2>
+        <form method="POST" action="/blogs/<%= blog._id %>/?_method=PUT" encType="multipart/form-data" class="max-[1200px]:px-4">
+            <div class="input-group flex flex-col mb-3">
+                <label for="title">Post Title</label>
+                <input class="w-full border p-3 outline-0" type="text" name="title" placeholder="<%= blog.title %>">
+            </div>
+            <div class="input-group flex flex-col mb-3">
+                <label for="description">Post Description</label>
+                <input class="w-full border p-3 outline-0" type="text" name="description" placeholder="<%= blog.description %>">
+            </div>
+            <div class="input-group flex flex-col mb-3">
+                <label for="detail">Post Detail</label>
+                <textarea class="w-full border p-3 outline-0 resize-none" name="detail" id="detail" cols="30" rows="10" placeholder="<%= blog.detail %>"></textarea>
+            </div>
+            <div class="input-group flex flex-col mb-3">
+                <label for="image">Select Image</label>
+                <input type="file" name="image" accept="image/*">
+            </div>
+            <button type="submit" class="px-6 py-5 inline-block bg-[#444444] text-white hover:bg-[#666666] transition-all">UPDATE POST</button>
+        </form>
+    </main>
+    <%- include("partials/_footer") -%>
+</body>
+</html>
