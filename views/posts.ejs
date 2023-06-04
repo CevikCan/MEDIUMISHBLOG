@@ -11,9 +11,9 @@
         <p class="max-[1200px]:px-4">Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
         <section>
             <h3 class="section-title text-2xl font-bold mt-5 border-b pb-1 max-[1200px]:px-4">All Stories</h3>
-            <div class="post-wrapper gap-5 mt-5 max-[1024px]:flex-col max-[1200px]:px-4">
+            <div class="post-wrapper flex flex-wrap gap-5 mt-5 max-[1024px]:flex-col max-[1200px]:px-4">
                 <% blogs.forEach(blog => { %>
-                    <div class="item w-1/3 border h-[420px] mb-3 max-[1024px]:w-full relative">
+                    <div class="item w-[calc(33.333%-20px)] border h-[420px] mb-3 max-[1024px]:w-full relative">
                         <div class="item-img">
                             <img src="<%= blog.image %>" alt="" class="max-h-[250px] object-cover w-full">
                         </div>

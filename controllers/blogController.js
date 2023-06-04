@@ -16,7 +16,6 @@ exports.createBlog = (req,res) => {
           ...req.body,
           image: "/uploads/" + uploadImage.name,
         });
-        console.log(req.body);
         res.redirect("/");
       });
   }
@@ -38,7 +37,6 @@ exports.createBlog = (req,res) => {
 
   exports.editBlog = async (req,res) => {
     const blog = await Blog.findOne({_id: req.params.id});
-
     
     let uploadImage = req.files.image;
     let uploadPath = __dirname + "/../public/uploads/" + uploadImage.name;
@@ -52,5 +50,22 @@ exports.createBlog = (req,res) => {
     blog.save();
 
     res.redirect("/blogs/" + req.params.id);
+  }
+
+  exports.getSearchBlog = async (req,res) => {
+    const searchQuery = req.query.blogs;
+    const regex = new RegExp(searchQuery, 'i');
+    const searchItems = await Blog.find({
+      title: { $regex: regex },
+    }).exec();
+    const searchLink = `/search?q=${encodeURIComponent(searchQuery)}`;
+    const searchResultsFound = searchItems.length > 0;
+
+    res.render("search",{
+      searchQuery,
+      searchItems,
+      searchLink,
+      searchResultsFound
+    });
   }
 

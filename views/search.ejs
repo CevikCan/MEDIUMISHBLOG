@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include("partials/_head") -%>
+
+<body>
+    <%- include("partials/_header") -%>
+
+    <main class="max-w-[1140px] mx-auto pt-5">
+        <h1 class="main-title font-righteous text-[40px] max-[1200px]:px-4">Mediumish</h1>
+        <p class="max-[1200px]:px-4">Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
+        <section>
+            <% if (searchResultsFound) { %>
+                <h3 class="section-title text-2xl font-bold mt-5 border-b pb-1 max-[1200px]:px-4">Search results for "<%= searchQuery %>"</h3>
+                <div class="post-wrapper flex flex-wrap gap-5 mt-5 max-[1024px]:flex-col max-[1200px]:px-4">
+                    <% searchItems.forEach(item => { %>
+                        <div class="item w-[calc(33.333%-20px)] border h-[420px] mb-3 max-[1024px]:w-full relative">
+                            <div class="item-img">
+                                <img src="<%= item.image %>" alt="" class="max-h-[250px] object-cover w-full">
+                            </div>
+                            <div class="item-body px-3 pb-3 mt-2">
+                                <div class="item-title text-xl font-bold">
+                                    <%= item.title %>
+                                </div>
+                                <div class="items-desc mt-2">
+                                    <%= item.description %>
+                                </div>
+                            </div>
+                            <div class="pl-3 absolute bottom-3">
+                                <a href="/blogs/<%=item._id%>" class="text-sky-600">Post Detail</a>
+                            </div>
+                        </div>
+                    <% }) %>
+                </div>
+                <% } %>
+                <% else { %>
+                    <h3 class="section-title text-2xl font-bold mt-5 border-b pb-1 max-[1200px]:px-4">No results found for web <%=searchQuery%></h3>
+                <% } %>
+        </section>
+    </main>
+    <%- include("partials/_footer") -%>
+</body>
+
+</html>

@@ -11,10 +11,10 @@
                     <a href="/" class="text-sm">Stories</a>
                     <a href="/add-post" class="text-sm">Add Post</a>
                 </nav>
-                <form action="" class="max-[1024px]:hidden">
+                <form action="<%= searchLink %>"  method="GET" encType="multipart/form-data" class="max-[1024px]:hidden">
                     <div class="flex items-center rounded-[30px] border border-slate-300 p-1.5 ">
-                        <input type="text" class="text-xs focus:outline-none" placeholder="Search">
-                        <button>
+                        <input type="text" class="text-xs focus:outline-none" placeholder="Search" name="blogs">
+                        <button type="submit">
                             <svg width="15px" height="15px" viewBox="0 0 24 24" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
                                 <g id="Interface / Search_Magnifying_Glass">
