@@ -31,6 +31,36 @@
                     </div>
                 <% }) %>
             </div>
+            <% if (pages > 0) { %>
+                <div class="flex justify-center mt-12">
+                    <ul class="flex">
+                        <% if (current == 1) { %>
+                            <li class="disabled"><a class="w-[36px] h-[36px] flex justify-center items-center bg-slate-100">First</a></li>
+                        <% } else { %>
+                            <li><a href="/?page=1" class="w-[36px] h-[36px] flex justify-center items-center bg-slate-100 hover:bg-slate-200 transition-all">First</a></li>
+                        <% } %>
+                        <% var i = (Number(current) > 5 ? Number(current) - 4 : 1) %>
+                        <% if (i !== 1) { %>
+                            <li class="disabled"><a class="w-[36px] h-[36px] flex justify-center items-center bg-slate-100">...</a></li>
+                        <% } %>
+                        <% for (; i <= (Number(current) + 4) && i <= pages; i++) { %>
+                            <% if (i == current) { %>
+                                <li class="active"><a class="w-[36px] h-[36px] flex justify-center items-center bg-slate-200"><%= i %></a></li>
+                            <% } else { %>
+                                <li><a href="/?page=<%= i %>" class="w-[36px] h-[36px] flex justify-center items-center bg-slate-100 hover:bg-slate-200 transition-all"><%= i %></a></li>
+                            <% } %>
+                            <% if (i == Number(current) + 4 && i < pages) { %>
+                                <li class="disabled"><a class="w-[36px] h-[36px] flex justify-center items-center bg-slate-100">...</a></li>
+                            <% } %>
+                        <% } %>
+                        <% if (current == pages) { %>
+                            <li class="disabled"><a class="w-[36px] h-[36px] flex justify-center items-center bg-slate-100">Last</a></li>
+                        <% } else { %>
+                            <li><a href="/?page=<%= pages %>" class="w-[36px] h-[36px] flex justify-center items-center bg-slate-100 hover:bg-slate-200 transition-all">Last</a></li>
+                        <% } %>
+                    </ul>
+                </div>
+            <% } %>
         </section>
     </main>
     <%- include("partials/_footer") -%>

@@ -21,9 +21,20 @@ exports.createBlog = (req,res) => {
   }
 
   exports.getBlogsAll = async (req,res) => {
-    const blogs = await Blog.find({});
+    const page = req.query.page || 1;
+    const blogsPerPage = 2;
+
+    const totalBlogs = await Blog.find().countDocuments();
+
+
+    const blogs = await Blog.find({})
+    .skip((page - 1) * blogsPerPage)
+    .limit(blogsPerPage);
+ 
     res.render("posts",{
-      blogs
+      blogs,
+      current: page,
+      pages: Math.ceil(totalBlogs / blogsPerPage)
     })
   }
 
